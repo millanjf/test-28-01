@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 #Pipeline > Stages > Jobs > Tasks (Steps)
-Stages:
+stages:
 - stage: Build
   jobs:
   - job: Job1
