@@ -19,6 +19,7 @@ stages:
       displayName: 'Build 1 job2'
 
 - stage: DevDeploy
+  dependsOn: Build
   jobs:
   - job: Job3
   #eliminamos dependencia otro stage
@@ -33,6 +34,9 @@ stages:
         displayName: 'Build 2 job4'
 
 - stage: QADeploy
+  dependsOn: 
+  - Build
+  - DevDeploy
   jobs:
   - job: Job5
   #eliminamos dependencia otro stage
