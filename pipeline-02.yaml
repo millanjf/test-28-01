@@ -46,3 +46,13 @@ stages:
     steps:
       - script: echo Build 3 job5
         displayName: 'Build 3 job5'
+
+- stage: ProdDeploy
+  dependsOn: 
+  - QADeploy
+  - DevDeploy
+  jobs:
+  - job: Job6
+    steps:
+      - script: echo Build 4 job6
+        displayName: 'Build 4 job6'
