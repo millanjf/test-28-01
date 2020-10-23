@@ -36,7 +36,6 @@ stages:
 - stage: QADeploy
   dependsOn: 
   - Build
-  - DevDeploy
   jobs:
   - job: Job5
   #eliminamos dependencia otro stage
