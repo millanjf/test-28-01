@@ -7,14 +7,15 @@ pool:
 #Pipeline > Stages > Jobs > Tasks (Steps)
 stages:
 - stage: Build
-  jobs: Programas
+  jobs: 
+  - job: Programas
   #programas preinstalados en las máquinas (da igual el so)
-  steps:
-  -bash: java --version
-  -bash:  node --version
-  -bash: pyhton --version
-  -bash: mvn -version
-  -bash: docker version
+    steps:
+      - bash: java --version
+      - bash:  node --version
+      - bash: pyhton --version
+      - bash: mvn -version
+      - bash: docker version
 
 
 
