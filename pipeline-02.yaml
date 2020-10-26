@@ -15,7 +15,7 @@ stages:
     - bash: echo "build step"
 
 
-- stage: Dev deployment
+- stage: Dev_deployment
   jobs: 
   - job: Deployement
     steps:
@@ -29,7 +29,7 @@ stages:
        - script: echo delpoy to Dev
         
 
-- stage: Pre deployement
+- stage: Pre_deployement
   jobs: 
   - job: Deployement
     steps:
