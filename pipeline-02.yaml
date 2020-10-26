@@ -20,7 +20,7 @@ stages:
   - job: Deployement
     steps:
     - bash: echo "Deployment Dev"
-  - deployment: Dev Deployment
+  - deployment: Dev_Deployment
     environment: Dev
     strategy:
      runOnce:
@@ -34,7 +34,7 @@ stages:
   - job: Deployement
     steps:
     - bash: echo "Deployment Pre"
-  - deployment: Pre Deployment
+  - deployment: Pre_Deployment
     environment: Pre
     strategy:
      runOnce:
