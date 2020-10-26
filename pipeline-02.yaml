@@ -11,7 +11,7 @@ stages:
   - job: Programas
   #programas preinstalados en las máquinas (da igual el so)
     steps:
-      - bash: java --version
+      - bash: java -version
       - bash:  node --version
       - bash: pyhton --version
       - bash: mvn -version
