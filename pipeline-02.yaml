@@ -7,25 +7,37 @@ pool:
 #Pipeline > Stages > Jobs > Tasks (Steps)
 stages:
 - stage: Build
-#variable a nivel stage
-  variables:
-   environment: Build
-  jobs:
-  - job: Job1
-  #variable a nivel job
-    variables:
-     job: job1
-    steps:
-    - bash: echo Build 1 job1
-    - bash: echo variable pipeline $(Pipeline Level.Variable)
-    - bash: echo variable stage $(environment)
-    - bash: echo variable job $(job)
-      displayName: 'Build 1 job1'
-  - job: Job2
-    steps:
-    - script: |
-        echo Add other tasks to build, test, and deploy your project.
-      displayName: 'Build 1 job2'
+  jobs: Programas
+  #programas preinstalados en las máquinas (da igual el so)
+  steps:
+  -bash: java --version
+  -bash:  node --version
+  -bash: pyhton --version
+  -bash: mvn -version
+  -bash: docker version
+
+
+
+
+# #variable a nivel stage
+#   variables:
+#    environment: Build
+#   jobs:
+#   - job: Job1
+#   #variable a nivel job
+#     variables:
+#      job: job1
+#     steps:
+#     - bash: echo Build 1 job1
+#     - bash: echo variable pipeline $(Pipeline Level.Variable)
+#     - bash: echo variable stage $(environment)
+#     - bash: echo variable job $(job)
+#       displayName: 'Build 1 job1'
+#   - job: Job2
+#     steps:
+#     - script: |
+#         echo Add other tasks to build, test, and deploy your project.
+#       displayName: 'Build 1 job2'
 
 #Ctrl + K + C Comment Block
 #Ctrl + K + U Uncomment Block
