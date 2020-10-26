@@ -12,8 +12,8 @@ stages:
   #programas preinstalados en las máquinas (da igual el so)
     steps:
       - bash: java -version
-      - bash:  node --version
-      - bash: pyhton --version
+      - bash: node --version
+      - bash: python --version
       - bash: mvn -version
       - bash: docker version
 
