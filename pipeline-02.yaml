@@ -1,24 +1,48 @@
 trigger:
 - master
 
-strategy:
-  matrix:
-    linux:
-      operatingSystem: 'ubuntu-latest'
-    mac:
-      operatingSystem: 'macos-latest'
+
 
 pool:
-  vmImage: $(operatingSystem)
+  vmImage: 'ubuntu-latest'
 
-# pool:
-#   vmImage: 'ubuntu-latest'
+#Pipeline > Stages > Jobs > Tasks (Steps)
+stages:
+- stage: Build
+  jobs: 
+  - job: Build
+    steps:
+    - bash: echo "build step"
 
-# #Pipeline > Stages > Jobs > Tasks (Steps)
-# stages:
-# - stage: Build
-#   jobs: 
-#   - job: Programas
+
+- stage: Dev deployment
+  jobs: 
+  - job: Deployement
+    steps:
+    - bash: echo "Deployment Dev"
+  - deployment: Dev Deployment
+    environment: Dev
+    strategy:
+     runOnce:
+      deploy:
+       steps:
+       - script: echo delpoy to Dev
+        
+
+- stage: Pre deployement
+  jobs: 
+  - job: Deployement
+    steps:
+    - bash: echo "Deployment Pre"
+  - deployment: Pre Deployment
+    environment: Pre
+    strategy:
+     runOnce:
+      deploy:
+       steps:
+       - script: echo delpoy to Pre
+        
+    
 #   #programas preinstalados en las máquinas (da igual el so)
 #     steps:
 #       - bash: java -version
