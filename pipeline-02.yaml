@@ -1,34 +1,44 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+strategy:
+  matrix:
+    linux:
+      operatingSystem: 'ubuntu-latest'
+    mac:
+      operatingSystem: 'macos-latest'
 
-#Pipeline > Stages > Jobs > Tasks (Steps)
-stages:
-- stage: Build
-  jobs: 
-  - job: Programas
-  #programas preinstalados en las máquinas (da igual el so)
-    steps:
-      - bash: java -version
-      - bash: node --version
-      - bash: python --version
-      - bash: mvn -version
-      - bash: docker version
-      - task: CopyFiles@2
-        inputs:
-          SourceFolder: '$(System.DefaultWorkingDirectory)'
-          Contents: |
-            **/*.yaml
-            **/*.tf
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+pool:
+  vmImage: $(operatingSystem)
+
+# pool:
+#   vmImage: 'ubuntu-latest'
+
+# #Pipeline > Stages > Jobs > Tasks (Steps)
+# stages:
+# - stage: Build
+#   jobs: 
+#   - job: Programas
+#   #programas preinstalados en las máquinas (da igual el so)
+#     steps:
+#       - bash: java -version
+#       - bash: node --version
+#       - bash: python --version
+#       - bash: mvn -version
+#       - bash: docker version
+#       - task: CopyFiles@2
+#         inputs:
+#           SourceFolder: '$(System.DefaultWorkingDirectory)'
+#           Contents: |
+#             **/*.yaml
+#             **/*.tf
+#           TargetFolder: '$(Build.ArtifactStagingDirectory)'
         
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
+#       - task: PublishBuildArtifacts@1
+#         inputs:
+#           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#           ArtifactName: 'drop'
+#           publishLocation: 'Container'
 
 
 
