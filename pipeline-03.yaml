@@ -10,7 +10,7 @@ steps:
 - task: DownloadSecureFile@1
   name: publickey
   inputs:
-    secureFile: 'claves Azure.pub'
+    secureFile: 'clavesAzure.pub'
 
 - task: TerraformCLI@0
   inputs:
