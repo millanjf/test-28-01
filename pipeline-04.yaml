@@ -50,6 +50,9 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - script: ls -R $(System.ArtifactsDirectory)
+      displayName: 'ArtifactsDirectory'
+    
     - task: DownloadPipelineArtifact@2
       inputs:
         buildType: 'current'
