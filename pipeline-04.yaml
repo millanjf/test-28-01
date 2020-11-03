@@ -9,8 +9,7 @@ resources:
   #Build DOcker image
 
 variables:
-  tag: 23 
-  #'$(Build.BuildId)'
+  tag: '$(Build.BuildId)'
 
 stages:
 - stage: Build
